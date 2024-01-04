@@ -8836,9 +8836,10 @@ h1, h2, h3, h4, h5,
 
 .ftco-about img{
   position: relative;
-    margin-top: -120px;
-    object-fit: cover;
-    width: 440px;
+  margin-top: -120px;
+  object-fit: cover;
+  width: 40vw;
+  left: -80px;
 }
 
 .ftco-about ul.about-info {
@@ -9183,7 +9184,11 @@ textarea.form-control {
     }
 
     .ftco-about img{
-      width: 80vw;
+      width: 100vw;
+      position: relative;
+    margin-top: -65px;
+    object-fit: cover;
+    left: -35px;
     }
     .ftco-about .row.justify-content-start.pb-3{
       margin-top: 3rem;
