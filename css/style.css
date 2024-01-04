@@ -8673,7 +8673,7 @@ h1, h2, h3, h4, h5,
 
           @media (max-width: 767px){
             #home-section img{
-              width: 90vw;
+              width: 90vw!important;
             }
 
             #home-section .text h1 {
@@ -9149,6 +9149,10 @@ textarea.form-control {
 
 #services-section, #resume-section{
   background-color: #0a0a0a;
+}
+
+#home-section img{
+  width: 40vw;
 }
   @media (max-width: 767.98px) {
     .ftco-section {
