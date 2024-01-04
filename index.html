@@ -20,7 +20,9 @@
 	<link rel="icon" href="./images/favicon.png" type="image/x-icon">
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
@@ -38,6 +40,37 @@
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
+
+	<style>
+		#notification {
+			position: fixed;
+			bottom: 20px;
+			left: 20px;
+			background-color: #3498db;
+			color: #fff;
+			padding: 10px;
+			border-radius: 5px;
+			display: none;
+		}
+
+		#timeline-container {
+			width: 100%;
+			height: 5px;
+			background-color: #0a0a0a;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 1000;
+		}
+
+		#timeline-fill {
+			height: 100%;
+			width: 0;
+			background-color: #3498db;
+			/* Cor da linha de preenchimento */
+		}
+	</style>
+
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -48,6 +81,10 @@
 			<!-- Adicione outros formatos de vídeo compatíveis, se necessário -->
 		</video>
 
+	</div>
+
+	<div id="timeline-container">
+		<div id="timeline-fill"></div>
 	</div>
 
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
@@ -569,7 +606,7 @@
 		</div>
 	</footer>
 
-
+	<div id="notification"></div>
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -594,9 +631,13 @@
 
 	<script src="js/main.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+		integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 	<!-- Swiper JS -->
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@0.2.28/bundled/lenis.js"></script>
 	<!-- Initialize Swiper -->
 	<script>
 		var swiper = new Swiper(".mySwiper", {
@@ -631,6 +672,81 @@
 	</script>
 
 
+	<script>
+
+		function getRandomName() {
+			const names = ["Ricardo", "Alexandre", "Carlos", "David", "Luísa", "Márcia", "Felipe", "Pedro Henrique", "Otávio", "Michele"];
+			const randomIndex = Math.floor(Math.random() * names.length);
+			return names[randomIndex];
+		}
+
+		function showNotification() {
+			const notification = document.getElementById('notification');
+			const randomName = getRandomName();
+
+			// Adicione o ícone do FontAwesome ao texto da notificação
+			notification.innerHTML = `<i class="fas fa-user-check mr-2"></i> ${randomName} acabou de solicitar um orçamento.`;
+
+			notification.style.display = 'block';
+			notification.style.background = '#00b2ea';
+			notification.style.borderRadius = '30px';
+			notification.style.padding = '10px 20px';
+			notification.style.color = '#000';
+			notification.style.fontWeight = '600';
+
+			setTimeout(() => {
+				notification.style.display = 'none';
+				setTimeout(showNotification, Math.random() * 20000);
+			}, 5000); // Exibir por 5 segundos
+		}
+
+		// Inicializar o processo de notificação após a carga da página
+		document.addEventListener('DOMContentLoaded', () => {
+			setTimeout(showNotification, Math.random() * 20000);
+		});
+
+
+
+
+
+	</script>
+
+	<script>
+		const lenis = new Lenis({
+			duration: 1.2,
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+			direction: 'vertical', // vertical, horizontal
+			gestureDirection: 'vertical', // vertical, horizontal, both
+			smooth: true,
+			mouseMultiplier: 1,
+			smoothTouch: false,
+			touchMultiplier: 2,
+			infinite: false,
+		})
+
+		//get scroll value
+		lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
+			console.log({ scroll, limit, velocity, direction, progress })
+		})
+
+		function raf(time) {
+			lenis.raf(time)
+			requestAnimationFrame(raf)
+		}
+
+		requestAnimationFrame(raf)
+	</script>
+
+	<script>
+		window.addEventListener('scroll', function () {
+			const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+			const scrollPercentage = (scrollTop / scrollHeight) * 100;
+
+			// Atualiza a largura da barra de preenchimento com base na porcentagem de rolagem
+			document.getElementById('timeline-fill').style.width = scrollPercentage + '%';
+		});
+	</script>
 </body>
 
 </html>
