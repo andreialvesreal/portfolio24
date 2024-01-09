@@ -7,14 +7,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<meta name="description"
-		content="Transforme sua presença online com o melhor desenvolvedor web do Brasil. Serviços de landing pages, sites institucionais, blogs e ecommerces.">
+		content="Transforme sua presença online . Serviços de landing pages, sites institucionais, blogs e ecommerces.">
 
 	<!-- Meta Tags Sociais -->
-	<meta property="og:title" content="Desenvolvimento Web | Seu Nome ou Nome da Empresa">
+	<meta property="og:title" content="Desenvolvimento Web | AlvesReal - Transforme sua presença online">
 	<meta property="og:description"
-		content="Transforme sua presença online com o melhor desenvolvedor web do Brasil. Serviços de landing pages, sites institucionais, blogs e ecommerces.">
-	<meta property="og:image" content="./images/ogimage.webp">
-	<meta property="og:url" content="#">
+		content="Transforme sua presença online. Serviços de landing pages, sites institucionais, blogs e ecommerces.">
+	<meta property="og:image"
+		content="https://raw.githubusercontent.com/andreialvesreal/portfolio24/main/images/ogimage.webp">
+	<meta property="og:url" content="https://andreialvesreal.github.io/portfolio24/">
 
 	<!-- Favicon -->
 	<link rel="icon" href="./images/favicon.png" type="image/x-icon">
@@ -69,6 +70,36 @@
 			background-color: #3498db;
 			/* Cor da linha de preenchimento */
 		}
+
+
+		#ftco-navbar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 0px 100px;
+			background: rgba(255, 255, 255, .1) !important;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			backdrop-filter: blur(10px);
+			border-bottom: 2px solid rgba(255, 255, 255, .2);
+		}
+
+		#ftco-navbar::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .4), transparent);
+			transition: .5s;
+		}
+
+		#ftco-navbar:hover::before {
+			left: 100%;
+		}
 	</style>
 
 </head>
@@ -92,7 +123,7 @@
 			<a class="navbar-brand" href="index.html"><img src="./images/logotipo-branca.png" width="140px" alt=""></a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
+				<span class="oi oi-menu"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
@@ -125,9 +156,14 @@
 								mais</a></p>
 					</div>
 				</div>
+
 				<div class="col-lg-6 col-md-6 col-sm-12">
-					<img src="./images/my_img (1).webp" alt="">
+					<img src="./images/my_img (1) - mobile.webp" class="d-lg-none" id="img_headline" alt="">
+					<img src="./images/my_img (1).webp" class="d-none d-lg-block" id="img_headline" alt="">
 				</div>
+
+
+
 
 
 			</div>
@@ -222,9 +258,13 @@
 	<section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
 		<div class="container">
 			<div class="row d-flex">
-				<div class="col-md-6 col-lg-6 d-flex">
-					<img src="./images/about-img.webp" alt="">
+				<!--Image Headline Mobile-->
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<img src="./images/about-img-mobile.webp" class="d-lg-none" id="img_sobre" alt="">
+					<img src="./images/about-img.webp" class="d-none d-lg-block" id="img_sobre" alt="">
 				</div>
+
+
 				<div class="col-md-6 col-lg-6 pl-lg-5 pb-5">
 					<div class="row justify-content-start pb-3">
 						<div class="col-md-12 heading-section ftco-animate">
